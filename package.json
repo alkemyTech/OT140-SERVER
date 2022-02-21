@@ -6,18 +6,33 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
+    "express-validator": "^6.14.0",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "mysql2": "^2.2.3",
-    "sequelize": "^6.3.5"
+    "pg": "^8.7.3",
+    "sequelize": "^6.16.2"
   },
   "devDependencies": {
     "sequelize-cli": "^6.2.0"
-  }
+  },
+  "description": "1) Create database\r 2) Copy .env.example to .env and fill with database credentials.",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alkemyTech/OT140-SERVER.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alkemyTech/OT140-SERVER/issues"
+  },
+  "homepage": "https://github.com/alkemyTech/OT140-SERVER#readme"
 }
