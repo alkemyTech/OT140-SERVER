@@ -1,29 +1,30 @@
-const activities = require('../models/activity');
+const db = require('../models/index');
 
 
-const update = async (req, res, next) => {
+
+const updateActivity = async (req, res) => {
     try {
         const {id}= req.params;
-        const {name, image, content} = req.body;
+        const {name,content} = req.body;
 
-        const activity = await activities.findByPk(id);
+        const activity = await db.Activities.findByPk(id);
 
         if(!activity){
             res.status(404).json('The activity does not exist'); 
         }
         else{
-          const activityUpdate =  await activity.update({              
+          const activityUpdate =  await db.Activities.update({              
                     name : name,
-                    image : image,
                     content : content,
                     },{
-                        where : { id : id}
+                        where : {id : id}
                     })
+    
           
             const response = {
                 statusCode: 201,
                 msg : 'Activity successfully updated',
-                activityUpdate : activityUpdate
+                activityUpdated : activityUpdate
             }
             res.status(201).json({ response });
         }
@@ -34,8 +35,7 @@ const update = async (req, res, next) => {
             msg :'internal server error'
         }
         res.status(500).json({ response })
-        next(err)
     }
 }
 
-module.exports = update;
+module.exports = {updateActivity}
