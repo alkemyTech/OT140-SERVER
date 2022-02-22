@@ -1,7 +1,6 @@
 const db = require('../models/index');
 
 
-
 const updateActivity = async (req, res) => {
     try {
         const {id}= req.params;
@@ -13,18 +12,19 @@ const updateActivity = async (req, res) => {
             res.status(404).json('The activity does not exist'); 
         }
         else{
-          const activityUpdate =  await db.Activities.update({              
-                    name : name,
-                    content : content,
-                    },{
-                        where : {id : id}
-                    })
-    
-          
+              await db.Activities.update({
+                name : name,
+                content : content,
+            },{
+                where : { id : id }
+            })
+
+          const activityUpdated =  await db.Activities.findByPk(id)
+
             const response = {
                 statusCode: 201,
                 msg : 'Activity successfully updated',
-                activityUpdated : activityUpdate
+                activityUpdated : activityUpdatedd
             }
             res.status(201).json({ response });
         }
@@ -37,5 +37,5 @@ const updateActivity = async (req, res) => {
         res.status(500).json({ response })
     }
 }
-
+        
 module.exports = {updateActivity}
