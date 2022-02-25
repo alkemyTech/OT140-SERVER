@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-router.put("/:id", userController.userUpdate);
+router.patch("/:id", userController.userUpdate);
 
 
 module.exports = router;

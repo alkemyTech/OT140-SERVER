@@ -42,4 +42,4 @@ const userUpdate = async (req, res) => {
 }
 
 
-module.exports = {userUpdate, getAll}
+module.exports = {userUpdate}
