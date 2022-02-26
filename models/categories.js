@@ -16,7 +16,10 @@ module.exports = (sequelize, DataTypes) => {
   Categories.init({
     name: DataTypes.STRING,
     description: DataTypes.STRING,
-    image: DataTypes.STRING
+    image: DataTypes.STRING,
+    createdAt: DataTypes.DATE,
+    updatedAt: DataTypes.DATE,
+    deletedAt: DataTypes.DATE,
   }, {
     sequelize,
     modelName: 'Categories',
