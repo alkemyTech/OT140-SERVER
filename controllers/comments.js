@@ -1,5 +1,6 @@
 const db = require('../models/index');
 
+
 const update = async (req, res) => {
 
     try {
@@ -75,4 +76,4 @@ const update = async (req, res) => {
 };
 
 
-module.exports = { update, remove }
+module.exports = { create, update, remove };
