@@ -18,7 +18,7 @@ const getAll = async(req, res) => {
 };
 
 const getById = async(req, res) => {
-    let id = req.params.id;
+    let { id } = req.params.id;
     try {
         const userById = await Users.findByPk(id);
         if (!userById) {
@@ -40,7 +40,32 @@ const getById = async(req, res) => {
     };
 };
 
+const createUser = async(req, res) => {
+    const { firstName, lastName, email, password, roleId } = req.body;
+    try {
+        const newUser = await Users.create(req.body, {
+            where: {
+                firstName,
+                lastName,
+                email,
+                password,
+                roleId
+            }
+        });
+        res.status(200).json({
+            success: true,
+            msg: `User created by id ${newUser.id}.`
+        })
+    } catch (error) {
+        res.status(404).json({
+            success: false,
+            msg: `Can't create a new user.`
+        });
+    };
+};
+
 module.exports = {
     getAll,
-    getById
+    getById,
+    createUser
 };

@@ -18,6 +18,7 @@ module.exports = {
             },
             email: {
                 type: Sequelize.STRING,
+                alowNull: false,
                 unique: true
             },
             password: {
@@ -31,7 +32,7 @@ module.exports = {
             roleId: {
                 type: Sequelize.INTEGER,
                 references: {
-                    model: 'Role',
+                    model: 'Roles',
                     key: 'id',
                 },
                 onUpdate: 'CASCADE',
