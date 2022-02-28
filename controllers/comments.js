@@ -1,25 +1,25 @@
 const db = require('../models/index');
 
-
 const create = async ( req, res) => {
 
     try {
         const {user_id,body,post_id} = req.body;
-         const CommentCreate =  await db.Comment.create({
-            user_id : user_id,
-            body: body,
-            post_id: post_id,
-        });
-        const response ={
-            status : 201,
-            msg : `comment ${CommentCreate.id} has ben created`,
-        };
-        res.status(201).json({ response });
+            const CommentCreate =  await db.Comment.create({
+               user_id : user_id,
+               body: body,
+               post_id: post_id,
+           });
+           const response ={
+               status : 201,
+               msg : `comment ${CommentCreate.id} has ben created`,
+           };
+           res.status(201).json({ response });
 
     } catch (err) {
         const response = {
             status : 500,
-            msg :'internal server error'
+            msg :'internal server error',
+            errors: errors.mapped()
         }
         res.status(500).json({ response })
     };
