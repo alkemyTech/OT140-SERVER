@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
         deletedAt: DataTypes.DATE
     }, {
         sequelize,
-        modelName: 'User',
+        modelName: 'Users',
     });
     return User;
 };

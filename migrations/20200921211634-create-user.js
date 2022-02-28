@@ -9,31 +9,37 @@ module.exports = {
                 type: Sequelize.INTEGER
             },
             firstName: {
-                type: Sequelize.STRING
+                type: Sequelize.STRING,
+                alowNull: false
             },
             lastName: {
-                type: Sequelize.STRING
+                type: Sequelize.STRING,
+                alowNull: false
             },
             email: {
-                type: Sequelize.STRING
+                type: Sequelize.STRING,
+                unique: true
             },
             password: {
-                type: Sequelize.STRING
+                type: Sequelize.STRING,
+                alowNull: false
             },
             photo: {
-                type: Sequelize.STRING
+                type: Sequelize.STRING,
+                alowNull: true
             },
             roleId: {
                 type: Sequelize.INTEGER,
                 references: {
-                    model: 'Roles',
+                    model: 'Role',
                     key: 'id',
                 },
                 onUpdate: 'CASCADE',
                 onDelete: 'SET NULL'
             },
             isActive: {
-                type: Sequelize.BOOLEAN
+                type: Sequelize.BOOLEAN,
+                defaultValue: true
             },
             deletedAt: {
                 type: Sequelize.DATE
