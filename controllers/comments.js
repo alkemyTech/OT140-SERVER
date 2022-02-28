@@ -39,5 +39,40 @@ const update = async (req, res) => {
 };
 
 
+ const remove = async (req, res) => {
 
-module.exports = { update }
+        try {
+            const { id } = req.params;
+    
+            const comments = await db.Comment.findByPk(id);
+          
+            if (!comments) {
+             
+                res.status(404).json('The comment does not exist');
+         
+            } else {
+    
+                await db.Comment.destroy( {
+                    where: { id: id }
+                })
+        
+                const response = {
+                    status: 201,
+                    msg: 'comment deleted',
+                }
+                res.status(201).json({ response })
+            }
+    
+    
+        } catch (err) {
+            const response = {
+                status : 500,
+                msg :'internal server error'
+            }
+            res.status(500).json({ response })
+        }
+
+};
+
+
+module.exports = { update, remove }
