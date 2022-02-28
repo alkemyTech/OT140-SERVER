@@ -1,12 +1,5 @@
 const db = require('../models/index');
 
-
-const list = async (req, res) => {
-    const comments = await db.Comment.findAll();
-
-    res.json(comments)
-}
-
 const update = async (req, res) => {
 
     try {
@@ -42,22 +35,9 @@ const update = async (req, res) => {
             msg :'internal server error'
         }
         res.status(500).json({ response })
-    }
+    };
+};
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-}
-
-module.exports = { list, update };
+module.exports = { update }
