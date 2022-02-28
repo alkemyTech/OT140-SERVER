@@ -22,7 +22,7 @@ const update = async (req, res) => {
             const commentUpdated = await db.Comment.findByPk(id);
             const response = {
                 status: 201,
-                msg: 'comment updated',
+                msg: 'updated commentary',
                 comment: commentUpdated
             }
             res.status(201).json({ response })
@@ -58,7 +58,7 @@ const update = async (req, res) => {
         
                 const response = {
                     status: 201,
-                    msg: 'comment deleted',
+                    msg: 'deleted commentary',
                 }
                 res.status(201).json({ response })
             }

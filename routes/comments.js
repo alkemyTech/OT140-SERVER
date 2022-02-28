@@ -6,6 +6,5 @@ const commentsController = require('../controllers/comments');
 router.put('/:id',/*isOwnerBy*/commentsController.update);
 router.delete('/:id',commentsController.remove);
 
-router.get('/', commentsController.list);
   
 module.exports = router;
