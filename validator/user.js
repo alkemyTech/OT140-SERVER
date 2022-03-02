@@ -15,6 +15,7 @@ const validateCreate = [
   check("email")
         .exists()
         .isEmail(),
+  check("roleId").exists(),
     (req, res, next)=> {
         validateResult(req, res, next)
     }
