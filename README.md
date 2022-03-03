@@ -26,3 +26,10 @@ npx sequelize-cli db:seed:all
 ``` bash
 npm start
 ```
+
+## Documentation
+
+1) Users
+``` bash
+https://documenter.getpostman.com/view/15547223/UVktoYcg
+```
