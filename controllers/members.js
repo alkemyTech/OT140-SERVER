@@ -1,9 +1,9 @@
-const { Members } = require('../models/index');
+const { Member } = require('../models/index');
 
 const getAll = async(req, res) => {
     try {
-        const members = await Members.findAll({
-            //attributes: ['firstName']     //List of attributes to response json
+        const members = await Member.findAll({
+            attributes: ['name'] //List of attributes to response json
         });
         res.status(200).json({
             success: true,
@@ -19,20 +19,28 @@ const getAll = async(req, res) => {
 
 const create = async(req, res) => {
     try {
-        const { name } = req.body;
-
-        if (typeof name === "string") {
-            const newMember = await Members.create({ name: name });
+        const { name, description } = req.body;
+        if (typeof name === 'string') {
+            const newMember = await Member.create({
+                name,
+                description
+            });
             res.status(200).json({
                 sucess: true,
                 msg: `Member ${name} was created.`,
                 newMember
             });
+        } else {
+            res.status(404).json({
+                success: false,
+                msg: `The member name isn't a string.`
+            });
         }
+
     } catch (error) {
         res.status(404).json({
             success: false,
-            msg: `The member name isn't a string.`
+            msg: `Can't create a new member.`
         });
     };
 };
