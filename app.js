@@ -8,12 +8,9 @@ require('dotenv').config()
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-<<<<<<< HEAD
 const activitiesRouter= require('./routes/activities');
 const commentsRouter = require('./routes/comments');
-=======
 const categoriesRouter = require('./routes/categories');
->>>>>>> 571e193071ec863e865bdcc9d3961aa143977d11
 const organizationsRouter = require('./routes/organizations');
 
 
