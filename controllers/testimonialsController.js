@@ -81,8 +81,49 @@ const update = async (req, res) => {
     }
 };
 
+const getAll = async (req, res) => {
+
+    let pageSize = req.query.page
+    let pageLimit = 10;
+    
+    const limit = parseInt(pageLimit, 10) || 10;
+    const page = parseInt(pageSize, 10) || 1;
+    
+    const { count, rows} = await Testimonials.findAndCountAll({
+        
+        attributes: ['name', 'image', 'content'],
+        order: [['updatedAt', 'DESC']],
+        limit: limit,
+        offset: limit * (page - 1)
+    });
+    
+    const getNextPage = (page, limit, total) => {
+        if ((total/limit) > page) {
+            return page + 1;
+        }
+        console.log(page)
+        return null
+    }
+    
+    const getPreviousPage = (page) => {
+        if (page <= 1) {
+            return null
+        }
+        return page - 1;
+    }
+    
+    res.status(200).json({
+        previousPage: getPreviousPage(page),
+        currentPage: page,
+        nextPage: getNextPage(page, limit, count),
+        limit: limit,
+        total: count,
+        data:rows  })
+}
+
 module.exports = {
     create,
     update,
-    deleteTestimony
+    deleteTestimony,
+    getAll
 }

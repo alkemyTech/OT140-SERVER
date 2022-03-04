@@ -1,9 +1,12 @@
 var express = require('express');
 var router = express.Router();
 
-const { create, update, deleteTestimony } = require ('../controllers/testimonialsController')
+const { create, update, deleteTestimony, getAll } = require ('../controllers/testimonialsController')
 
 const validations = require ('../validations')
+
+//GET testimonies , 10 per page
+router.get('/', getAll)
 
 // POST Create testimony. name and content field validations 
 router.post('/', validations.testimonialForm, create);
