@@ -22,18 +22,6 @@
     "sequelize": "^6.16.2"
   },
   "devDependencies": {
-    "sequelize-cli": "^6.2.0"
-  },
-  "description": "1) Create database\r 2) Copy .env.example to .env and fill with database credentials.",
-  "main": "app.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/alkemyTech/OT140-SERVER.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/alkemyTech/OT140-SERVER/issues"
-  },
-  "homepage": "https://github.com/alkemyTech/OT140-SERVER#readme"
+    "sequelize-cli": "^6.4.1"
+  }
 }

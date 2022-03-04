@@ -1,20 +1,53 @@
-const {New} = require('../models/index')
+const { New } = require("../models/index");
+
 
 const createNews = async (req, res) => {
-    try{
-        const {name, content, image, categoryId} = req.body;
-        const newNews = await New.create({
-            name,
-            content,
-            image,
-            categoryId
-        })
-        res.status(200).send({message: 'New created', data: newNews})
+  const { name, content, image, categoryId } = req.body;
+  try {
+    const newNews = await New.create({
+      name,
+      content,
+      image,
+      categoryId,
+    });
+    res.status(200).send({ message: "New created", data: newNews });
+  } catch (err) {
+    res.status(500).json('Internal server error');
+   
+  }
+};
 
-    }catch(err){
-        res.status(500)
-        console.log(err)
+const updateNews = async (req, res) => {
+  const { id } = req.params;
+  const { name, content, image, categoryId } = req.body;
+  try {
+    const news = await New.findOne({
+      attributes: ["name", "content", "image", "categoryId"],
+      where: {
+        id,
+      },
+    });
+    if (!news) {
+      res.status(404).send("New not found");
     }
-}
+    const updatedNew = await New.update(
+      {
+        name,
+        content,
+        image,
+        categoryId,
+      },
+      {
+        where: {
+          id,
+        },
+      }
+    );
+    res.status(200).send({message: "New succesfully updated", data: updatedNew})
 
-module.exports = {createNews}
+  } catch (err) {
+      console.log(err)
+      res.status(500).json('Internal server error')
+  }
+};
+module.exports = { createNews, updateNews };

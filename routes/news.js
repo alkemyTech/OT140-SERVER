@@ -1,10 +1,11 @@
 const express = require('express')
-const newsRouter = express.Router()
-const {createNews} = require('../controllers/news.controller')
+const router = express.Router()
+const {createNews, updateNews} = require('../controllers/news.controller')
 const {validateCreateNews} = require('../validator/news')
 
-newsRouter  
+router
     .post('/', validateCreateNews, createNews)
+    .put('/:id', updateNews)
 
 
-module.exports = newsRouter
+module.exports = router
