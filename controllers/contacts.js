@@ -1,9 +1,14 @@
-const { Contacts } = require('../models/index');
+const { Contact } = require('../models/index');
 
 
-const getContacts = async(req, res) => {
-    const con = await Contacts.findAll();
-    res.json(con)
+const getContacts = async (req, res) => {
+
+    try {
+        const con = await Contact.findAll();
+        res.json(con)
+    } catch (error) {
+        res.json({ msg: 'No contact list to display' });
+    }
 }
 
 

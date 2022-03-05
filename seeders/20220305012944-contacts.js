@@ -8,21 +8,24 @@ module.exports = {
         phone: 3584256699,
         email: 'julian15@gmail.com',
         message: 'Es es el mensaje enviado por el contacto julian',
-        deletedAt: new Date
+        createdAt: new Date(),
+        updatedAt: new Date()
       },
       {
         name: 'Pablo',
         phone: 3584228599,
         email: 'pablo22@gmail.com',
         message: 'Es es el mensaje enviado por el contacto pablo',
-        deletedAt: new Date
+        createdAt: new Date(),
+        updatedAt: new Date()
       },
       {
         name: 'Francisco',
         phone: 3584256614,
         email: 'francisco11@gmail.com',
         message: 'Es es el mensaje enviado por el contacto francisco',
-        deletedAt: new Date
+        createdAt: new Date(),
+        updatedAt: new Date()
       }], {});
   },
 
