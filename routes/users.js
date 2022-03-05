@@ -1,7 +1,6 @@
-const express = require('express');
-const router = express.Router();
-const userController = require('../controllers/userController');
-const { sendWelcomeEmail } = require("../middlewares/sendEmail");
+var express = require('express');
+var router = express.Router();
+var userController = require("../controllers/userController");
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -14,6 +13,9 @@ router.get('/', function(req, res, next) {
 //call the function sendWelcomeEmail() 
 
 // DELETE user by id
-router.delete('/:id', userController.delete)
+//router.delete('/:id', userController.delete)
+
+router.patch("/:id", userController.userUpdate);
+
 
 module.exports = router;
