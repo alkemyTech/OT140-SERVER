@@ -3,7 +3,7 @@ var router = express.Router();
 
 const { create, update, deleteTestimony, getAll } = require ('../controllers/testimonialsController')
 
-const validations = require ('../validations')
+const validations = require ('../middlewares/validations')
 
 //GET testimonies , 10 per page
 router.get('/', getAll)

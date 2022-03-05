@@ -1,4 +1,4 @@
-const { Testimonials } = require('../models')
+const { Testimonial } = require('../models')
 const { validationResult } = require ('express-validator');
 
 
@@ -11,7 +11,7 @@ const create = async(req, res) => {
             try {
                 const { name, content } = req.body;
                
-                    const newTestimony = await Testimonials.create({ 
+                    const newTestimony = await Testimonial.create({ 
                         name: name,
                         content: content
                     });
@@ -35,20 +35,20 @@ const update = async (req, res) => {
     const { id } = req.params
     const { name, image, content } = req.body
     //Look for the testimony by id
-    const testimony = await Testimonials.findByPk(id);
+    const testimony = await Testimonial.findByPk(id);
      //Message if the testimony not exists
     if (!testimony) {
         res.status(404).json('Testimony not found');
        // Update the testimony
     } else {
-        await Testimonials.update({
+        await Testimonial.update({
             name: name, 
             image: image, 
             content: content, 
         },
             { where: { id }}
         );
-        const updatedTestimony = await Testimonials.findByPk(id)
+        const updatedTestimony = await Testimonial.findByPk(id)
         
         res.status(201).json({
             msg: 'testimony Successfully Updated',
@@ -62,14 +62,14 @@ const update = async (req, res) => {
     try {
         const { id } = req.params;
 
-        const testimony = await Testimonials.findByPk(id);
+        const testimony = await Testimonial.findByPk(id);
         //Message if the testimony not found
         if (!testimony) {
             res.status(404).json('Testimony not found');
         //Found the testimony and deleted
         } else {
 
-            await Testimonials.destroy( {
+            await Testimonial.destroy( {
                 where: { id }
             })
             res.status(201).json({ msg: 'The testimony was correctly deleted' })
@@ -89,7 +89,7 @@ const getAll = async (req, res) => {
     const limit = parseInt(pageLimit, 10) || 10;
     const page = parseInt(pageSize, 10) || 1;
     
-    const { count, rows} = await Testimonials.findAndCountAll({
+    const { count, rows} = await Testimonial.findAndCountAll({
         
         attributes: ['name', 'image', 'content'],
         order: [['updatedAt', 'DESC']],
