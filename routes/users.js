@@ -1,10 +1,16 @@
-const express = require('express');
-const router = express.Router();
-const { getAll, getById, createUser } = require('../controllers/users');
+var express = require('express');
+var router = express.Router();
+var userController = require("../controllers/userController");
 
 /* GET users listing. */
-router.get('/', getAll);
-router.get('/:id', getById);
+router.get('/', function(req, res, next) {
+    res.send('respond with a resource');
+});
+// DELETE user by id
+//router.delete('/:id', userController.delete)
+
+router.patch("/:id", userController.userUpdate);
+
 
 /* POST users listing. */
 router.post('/', createUser);
