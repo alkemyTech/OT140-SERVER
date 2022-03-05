@@ -6,5 +6,5 @@ const getNew = async (req, res) => {
 
 };
 module.exports = {
-    
+    getNew
 };
