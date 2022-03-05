@@ -1,16 +1,8 @@
-var express = require('express');
-var router = express.Router();
-const { Comments } = require('../db');
+const express = require('express');
+const router = express.Router();
 
+const {getComments}=require('../controllers/comments');
 
+router.get('/', getComments);
 
-//listado comments
-router.get('/', async (req, res) =>{
-    const com = await Comments.findAll({
-        attributes: ['body'],
-        order: ['createdAt']
-      }); 
-    res.json(com);
-});
-
-module.exports = router;
+module.exports= router;
