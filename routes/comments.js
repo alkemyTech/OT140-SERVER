@@ -1,9 +1,9 @@
 var express = require('express');
-const { getComments, getCommentsByPost } = require('../controllers/comments');
+const { getCommentsByPost } = require('../controllers/comments');
 var router = express.Router();
 
 
-router.get('/', getComments);
-router.get('/posts/:postId', getCommentsByPost);
+
+router.get('/', getCommentsByPost);
 
 module.exports = router;
