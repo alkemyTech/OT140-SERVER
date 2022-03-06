@@ -22,34 +22,48 @@ const getById = async(req, res) => {
     const { id } = req.params;
     try {
         const getSlideById = await Slide.findByPk(id);
-        res.status(200).json({
-            success: true,
-            getSlideById,
-        });
+        if (!getSlideById) {
+            res.status(404).json({
+                success: false,
+                msg: `Slide with the id ${id} doesn't exist.`
+            });
+        } else {
+            res.status(200).json({
+                success: true,
+                getSlideById,
+            });
+        }
     } catch (error) {
-        res.status(404).json({
-            success: false,
-            msg: "Slide doesn't exist.",
-            error,
-        });
-    }
+        res.status(504).json({
+            msg: 'Gateway Timeout.',
+            error
+        })
+    };
 };
 
 const remove = async(req, res) => {
     const { id } = req.params;
     try {
-        await Slide.destroy({
-            where: { id },
-        });
-        res.status(200).json({
-            success: true,
-            msg: `The slide with the id ${id} has been removed.`
-        });
+        const getSlideById = await Slide.findByPk(id);
+        if (!getSlideById) {
+            res.status(404).json({
+                success: false,
+                msg: `Slide with the id ${id} not found.`
+            });
+        } else {
+            await Slide.destroy({
+                where: { id }
+            });
+            res.status(200).json({
+                success: true,
+                msg: `The slide with the id ${id} has been removed.`
+            });
+        }
     } catch (error) {
-        res.status(404).json({
+        res.status(504).json({
             success: false,
-            msg: `Slide with the id ${id} not found.`,
-            error,
+            msg: 'Gateway Timeout.',
+            error
         });
     }
 };
@@ -57,5 +71,5 @@ const remove = async(req, res) => {
 module.exports = {
     getAll,
     getById,
-    remove,
+    remove
 };
