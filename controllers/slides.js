@@ -18,6 +18,23 @@ const getAll = async(req, res) => {
     };
 };
 
+const getById = async(req, res) => {
+    let { id } = req.params;
+    try {
+        const getSlideById = await Slide.findByPk(id);
+        res.status(200).json({
+            success: true,
+            getSlideById
+        })
+    } catch (error) {
+        res.status(404).json({
+            success: false,
+            msg: "Slide doesn't exist."
+        })
+    }
+}
+
 module.exports = {
-    getAll
+    getAll,
+    getById
 };
