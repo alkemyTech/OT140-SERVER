@@ -98,7 +98,7 @@ module.exports = {
             {
                 firstName: 'Jeremías',
                 lastName: 'Muriette',
-                email: 'jeremuriette@admin.com',
+                email: 'jere@admin.com',
                 password: '12345',
                 roleId: 1,
                 photo: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
