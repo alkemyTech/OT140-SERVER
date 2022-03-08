@@ -1,30 +1,96 @@
-const { Categories } = require('../models/index');
+const { Categories } = require("../models/index");
 
+const createCategorie = async (req, res) => {
+  try {
+    const name = req.body.name;
+
+    if (typeof name === "string") {
+      const newCategorie = await Categories.create({ name: name });
+      res.json({
+        newCategorie,
+        msg: `categorie was created`,
+      });
+    }
+  } catch (error) {
+    res.json(`the name is not a string`);
+  }
+};
+
+const deleteCategorie = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const categorie = await Categories.findByPk(id);
+
+    if (!categorie) {
+      res.status(404).json("Category does not exist");
+    } else {
+      await Categories.destroy({
+        where: { id: id },
+        force: true,
+      });
+
+      const response = {
+        status: 201,
+        msg: "deleted Category",
+      };
+      res.status(201).json({ response });
+    }
+  } catch (err) {
+    const response = {
+      status: 500,
+      msg: "internal server error",
+    };
+    res.status(500).json({ response });
+  }
+};
+
+const getAllCategories = async (req, res) => {
+
+  const categorias = await Categories.findAll({
+    attributes: ['name']
+  });
+  res.json(categorias);
+};
 
 const getCategories = async (req, res) => {
 
-    const categorias = await Categories.findAll({
-        attributes: ['name']
-    });
-    res.json(categorias);
+  let limit = 10;
+  let offset = 0;
+  const data = await Categories.findAndCountAll();
+  let page = req.params.page; // page number
+  let pages = Math.ceil(data.count / limit);
+  offset = limit * (page - 1);
+
+  const previousPage = page - 1;
+  const nextPage = page + 1;
+
+  const categorias = await Categories.findAll({
+    attributes: ['name']
+  });
+
+  res.status(200).json({ 'result': categorias, 'count': data.count, 'pages': pages, 'previousPage': previousPage, 'nextPage': nextPage });
 };
 
 const updateCategories = async (req, res) => {
 
-    const category = await Categories.findByPk(req.params.categorieId);
-    if (!category) {
-        res.status(404).json('The category doesn`t exist');
-    }
-    else {
-        await Categories.update(req.body, {
-            where: { id: req.params.categorieId }
-        });
-        res.status(201).json({ msg: 'Category Successfully Updated' });
-    }
+  const category = await Categories.findByPk(req.params.categorieId);
+  if (!category) {
+    res.status(404).json('The category doesn`t exist');
+  }
+  else {
+    await Categories.update(req.body, {
+      where: { id: req.params.categorieId }
+    });
+    res.status(201).json({ msg: 'Category Successfully Updated' });
+  }
 };
+
 
 module.exports = {
-    getCategories,
-    updateCategories
+  getAllCategories,
+  createCategorie,
+  deleteCategorie,
+  getCategories,
+  updateCategories
 };
-
