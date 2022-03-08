@@ -14,17 +14,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   New.init({
-    name: DataTypes.STRING,
+    name: DataTypes.VARCHAR,
     content: DataTypes.STRING,
-    image: DataTypes.STRING,
+    image: DataTypes.VARCHAR,
     categoryId: DataTypes.INTEGER,
-    createdAt: DataTypes.DATE,
-    updatedAt: DataTypes.DATE,
     deletedAt: DataTypes.DATE
   }, {
     sequelize,
     modelName: 'New',
-    timestamps: false
   });
   return New;
-}; 
+};
