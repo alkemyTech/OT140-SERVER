@@ -3,7 +3,7 @@
 module.exports = {
     up: async(queryInterface, Sequelize) => {
         await queryInterface.bulkInsert('Users', 
-        'Users',
+
         [         // passwords are not encrypted
             {
                 firstName: 'Juan Pablo',
@@ -11,7 +11,7 @@ module.exports = {
                 email: 'pablor@admin.com',
                 password: '12345',
                 roleId: 1,
-                photo: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
+                image: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -21,7 +21,7 @@ module.exports = {
                 email: 'rangogr@admin.com',
                 password: '12345',
                 roleId: 1,
-                photo: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
+                image: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -31,7 +31,7 @@ module.exports = {
                 email: 'seba@admin.com',
                 password: '12345',
                 roleId: 1,
-                photo: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
+                image: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -41,7 +41,7 @@ module.exports = {
                 email: 'trinibur@admin.com',
                 password: '12345',
                 roleId: 1,
-                photo: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
+                image: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -51,7 +51,7 @@ module.exports = {
                 email: 'luceroar@admin.com',
                 password: '12345', 
                 roleId: 1,
-                photo: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
+                image: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -61,7 +61,7 @@ module.exports = {
                 email: 'aleaccattoli@admin.com',
                 password: '12345', 
                 roleId: 1,
-                photo: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
+                image: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -71,7 +71,7 @@ module.exports = {
                 email: 'javierr@admin.com',
                 password: '12345', 
                 roleId: 1,
-                photo: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
+                image: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -81,7 +81,7 @@ module.exports = {
                 email: 'ricardo@admin.com',
                 password: '12345', 
                 roleId: 1,
-                photo: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
+                image: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -91,7 +91,7 @@ module.exports = {
                 email: 'ivaan@admin.com',
                 password: '12345',
                 roleId: 1,
-                photo: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
+                image: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -101,7 +101,7 @@ module.exports = {
                 email: 'jere@admin.com',
                 password: '12345',
                 roleId: 1,
-                photo: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
+                image: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -111,7 +111,7 @@ module.exports = {
                 email: 'billgates@standard.com',
                 password: '1234',
                 roleId: 2,
-                photo: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
+                image: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -121,7 +121,7 @@ module.exports = {
                 email: 'adalovee@standard.com',
                 password: '1234',
                 roleId: 2,
-                photo: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
+                image: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -131,7 +131,7 @@ module.exports = {
                 email: 'wozniak@standard.com',
                 password: '123456',
                 roleId: 2,
-                photo: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
+                image: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -141,7 +141,7 @@ module.exports = {
                 email: 'hopperr@standard.com',
                 password: '123456',
                 roleId: 2,
-                photo: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
+                image: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -151,7 +151,7 @@ module.exports = {
                 email: 'maarrksito@standard.com',
                 password: '124356', 
                 roleId: 2,
-                photo: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
+                image: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -161,7 +161,7 @@ module.exports = {
                 email: 'margaret@standard.com',
                 password: '124356', 
                 roleId: 2,
-                photo: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
+                image: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -171,7 +171,7 @@ module.exports = {
                 email: 'googlepage@standard.com',
                 password: '1245467', 
                 roleId: 2,
-                photo: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
+                image: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -181,7 +181,7 @@ module.exports = {
                 email: 'gosling@standard.com',
                 password: '1245467', 
                 roleId: 2,
-                photo: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
+                image: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -191,7 +191,7 @@ module.exports = {
                 email: 'linuss@standard.com',
                 password: '1245467', 
                 roleId: 2,
-                photo: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
+                image: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -201,7 +201,7 @@ module.exports = {
                 email: 'bberners@standard.com',
                 password: '123345', 
                 roleId: 2,
-                photo: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
+                image: 'https://s3-us-east-2.amazonaws.com/designevo/projects/uid-3087344/ac3b9ab0232c194d20bc7db6df70cacc/preview.png?t=1646769450007',
                 createdAt: new Date(),
                 updatedAt: new Date()
             }
