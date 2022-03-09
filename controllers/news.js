@@ -12,6 +12,7 @@ const createNews = async (req, res) => {
     });
     res.status(200).send({ message: "New created", data: newNews });
   } catch (err) {
+    console.log(err)
     res.status(500).json('Internal server error');
    
   }

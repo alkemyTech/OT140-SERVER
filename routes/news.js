@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const {createNews, updateNews} = require('../controllers/news.controller')
+const {createNews, updateNews} = require('../controllers/news')
 const {validateCreateNews} = require('../validator/news')
 
 router

@@ -39,7 +39,7 @@ app.use('/comments',commentsRouter);
 app.use('/categories', categoriesRouter);
 app.use('/organizations', organizationsRouter);
 app.use('/testimonials', testimonialsRouter);
-S
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
