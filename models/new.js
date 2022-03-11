@@ -14,9 +14,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   New.init({
-    name: DataTypes.VARCHAR,
+    name: DataTypes.STRING,
     content: DataTypes.STRING,
-    image: DataTypes.VARCHAR,
+    image: DataTypes.STRING,
     categoryId: DataTypes.INTEGER,
     deletedAt: DataTypes.DATE
   }, {
