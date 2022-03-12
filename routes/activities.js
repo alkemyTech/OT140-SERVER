@@ -1,9 +1,9 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const { check } = require('express-validator');
 const { postActivities } = require('../controllers/activities');
 const { validarCampos } = require('../middlewares/middlewares');
-
+const activitiesController = require('../controllers/activities');
 
 router.post('/', [
     check('name', 'El nombre es obligatorio').not().isEmpty(),
@@ -11,5 +11,7 @@ router.post('/', [
     validarCampos,
 ], postActivities);
 
-module.exports = router;
+router.put('/:id',activitiesController.updateActivity);
 
+
+module.exports = router;
