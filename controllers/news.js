@@ -24,6 +24,27 @@ const getNew = async (req, res) => {
     res.status(500).json({ response });
   }
 };
+
+
+const deleteNew = async ( req, res ) => {
+  try {
+      const id = req.params.id;
+      if( isNaN(id) || !req.params.id ) return res.status(400).json("id number is required or is not a number");
+
+      //find if exist
+      const aNew = await New.findOne({ where: { id: parseInt(id) }, attributes: ['categoryId' ] });
+      if( !aNew ) return res.status(404).json("No news with that id number");
+
+      //delete
+      await New.destroy({where: { id: parseInt(id) }});
+      res.json("New deleted");
+  } catch (error) {
+      res.status(500).json({ msg: 'Internal Server Error at Delete new' });
+  }
+};
+
+
 module.exports = {
-  getNew,
+  deleteNew,
+  getNew
 };
