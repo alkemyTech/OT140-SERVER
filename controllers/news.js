@@ -45,7 +45,6 @@ const listPaginatedNews = async ( req, res ) => {
       offset: from,
       limit: limit,
     });
-    //   console.table({ news });
     let previousPage = 0;
     from - 10 > 0 ? (previousPage = from - 10) : (previousPage = 0);
 
