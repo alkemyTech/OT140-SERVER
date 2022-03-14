@@ -15,6 +15,15 @@ const organizationsRouter = require("./routes/organizations");
 const testimonialsRouter = require("./routes/testimonials");
 const newsRouter = require("./routes/news");
 const slidesRouter = require("./routes/slides");
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const contactsRouter = require("./routes/contacts");
+const activitiesRouter= require('./routes/activities');
+const commentsRouter = require('./routes/comments');
+const categoriesRouter = require('./routes/categories');
+const organizationsRouter = require('./routes/organizations');
+const testimonialsRouter = require ('./routes/testimonials')
+
 
 const app = express();
 app.use(cors());
@@ -38,6 +47,15 @@ app.use("/organizations", organizationsRouter);
 app.use("/testimonials", testimonialsRouter);
 app.use("/news", newsRouter);
 app.use("/slides", slidesRouter);
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use("/contacts", contactsRouter);
+app.use('/activities',activitiesRouter);
+app.use('/comments',commentsRouter);
+app.use('/categories', categoriesRouter);
+app.use('/organizations', organizationsRouter);
+app.use('/testimonials', testimonialsRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
