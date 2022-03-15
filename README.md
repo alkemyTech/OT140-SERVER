@@ -37,3 +37,11 @@ https://documenter.getpostman.com/view/15547223/UVktoYcg
 ``` bash
 https://documenter.getpostman.com/view/15547223/UVktoYcg
 ```
+3) Categories
+
+``` bash
+https://documenter.getpostman.com/view/15433943/UVkpNvKS
+
+4) Testing Users
+
+https://documenter.getpostman.com/view/15433943/UVsLQ69f

@@ -1,34 +1,5 @@
 const db = require("../models/index");
-
-
-// module.exports = {
-//   delete(req, res) {
-//     const { id } = req.params;
-
-//     User.findByPk(id)
-//       .then((user) => {
-//         // Message for user not found
-//         if (!user) {
-//           res.status(404).json("User not found");
-//         } else {
-//           // Delete the user
-//           db.User.destroy({
-//             where: { id },
-//           })
-
-//             .then((userDeleted) => {
-//               res.status(200).json("user successfully deleted");
-//             })
-//             .catch((err) => {
-//               res.status(500).json("500 Internal Server Error");
-//             });
-//         }
-//       })
-//       .catch((err) => {
-//         res.status(500).json("500 Internal Server Error");
-//       });
-//   },
-// };
+const bcrypt = require('bcrypt')
 
 const getUsers = async (req, res) => {
   try{
@@ -43,8 +14,12 @@ const getUsers = async (req, res) => {
 const createUser = async (req, res) => {
   try {
     const { firstName, lastName, email,image, password, roleId } = req.body;
-    // const salt = bcrypt.genSalt(10);
-    // const pass= bcrypt.hash(password,salt)
+    const saltRounds = 10;
+    bcrypt.genSalt(saltRounds, (err, salt) => {
+      bcrypt.hash(password, salt, (err, hash) => {
+
+       });
+    });
     const savedUser = await db.User.create({
       firstName,
       lastName,
@@ -113,7 +88,7 @@ const deleteUser = async(req, res) => {
           id
         }
       })
-      res.status(200).send({message: 'User deleted succesfully', data: deletedUser})
+      res.status(200).send({message: 'User deleted succesfully', data: user})
     }
     
 
