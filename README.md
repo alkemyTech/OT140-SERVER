@@ -1,5 +1,4 @@
 # Server Base - Proyecto ONG
-[Category documentation: https://documenter.getpostman.com/view/15433943/UVkpNvKS]
 
 ## Envinroment setup
 
@@ -37,3 +36,7 @@ https://documenter.getpostman.com/view/15547223/UVktoYcg
 ``` bash
 https://documenter.getpostman.com/view/15547223/UVktoYcg
 ```
+3) Categories
+
+``` bash
+https://documenter.getpostman.com/view/15433943/UVkpNvKS
