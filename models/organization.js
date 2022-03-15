@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const social_media = require('./social_media');
 module.exports = (sequelize, DataTypes) => {
   class Organization extends Model {
     /**
@@ -10,7 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+     Organization.hasMany(models.social_media,{
+       foreignKey:'idOrganizacion'
+     })
     }
   };
   Organization.init({
