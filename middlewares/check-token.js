@@ -3,6 +3,7 @@
 // Verifica TOKEN en el Header
 // ====================================
 const jwt = require("jsonwebtoken");
+const User = require("../models/user");
 
 const checkToken = (req, res, next) => {
 
@@ -16,14 +17,22 @@ const checkToken = (req, res, next) => {
     let payload = {};
 
     try {
-        payload = jwt.verify(userToken, process.env.SEED);
+        payload = jwt.verify(userToken, process.env.SEED, () => {
+          if(User.roleId === 1){
+              next();
+          } else {
+            return res.status(403).json({ message: "El usuario no es administrador." })
+          }
+        
+        });
+
     } catch (error) {
         return res.status(403).json({
             error: 'Wrong TOKEN'
         });
     }
 
-    next();
+    //next();
 }
 
 module.exports = {
