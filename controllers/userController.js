@@ -1,5 +1,5 @@
 const db = require("../models/index");
-const bcrypt = require("bcrypt");
+
 
 // module.exports = {
 //   delete(req, res) {
@@ -30,20 +30,33 @@ const bcrypt = require("bcrypt");
 //   },
 // };
 
+const getUsers = async (req, res) => {
+  try{
+    const users = await db.User.findAll({})
+    res.status(200).json(users)
+
+  }catch(err){
+    console.log(err)
+    res.status(500).send('Internal server error')
+  }
+}
 const createUser = async (req, res) => {
   try {
-    const { firstName, lastName, email, password, roleId } = req.body;
-    const salt = bcrypt.genSalt(10);
+    const { firstName, lastName, email,image, password, roleId } = req.body;
+    // const salt = bcrypt.genSalt(10);
+    // const pass= bcrypt.hash(password,salt)
     const savedUser = await db.User.create({
       firstName,
       lastName,
       email,
-      password: bcrypt.hash(password, salt),
+      image,
+      password,
       roleId,
     });
-    res.status(200).send("User succesfully created");
+    res.status(200).send(savedUser);
   } catch (err) {
     res.status(500).send("Internal Server Error");
+    console.log(err)
   }
 };
 
@@ -88,4 +101,25 @@ const userUpdate = async (req, res) => {
   }
 };
 
-module.exports = { userUpdate, createUser };
+const deleteUser = async(req, res) => {
+  const { id } = req.params;
+  try{
+    const user = await db.User.findByPk(id)
+    if(!user){
+      res.status(404).json("User not found")
+    }else{
+      const deletedUser = await db.User.destroy({
+        where: {
+          id
+        }
+      })
+      res.status(200).send({message: 'User deleted succesfully', data: deletedUser})
+    }
+    
+
+  }catch(err){
+    res.status(500).json("500 Internal Server Error")
+  }
+}
+
+module.exports = {getUsers, userUpdate, createUser, deleteUser};
