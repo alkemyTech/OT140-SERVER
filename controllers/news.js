@@ -44,7 +44,7 @@ const updateNews = async (req, res) => {
         },
       }
     );
-    res.status(200).send({message: "New succesfully updated", data: updatedNew})
+    res.status(200).send({message: "New succesfully updated", data: news})
 
   } catch (err) {
       console.log(err)
@@ -52,3 +52,31 @@ const updateNews = async (req, res) => {
   }
 };
 module.exports = { createNews, updateNews };
+
+const getNew = async (req, res) => {
+  try {
+    const newId = req.params.id;
+    const newsDetails = await New.findAll({
+      where: {
+        id: newId,
+      },
+    });
+    if (!newsDetails) {
+      res.json("No news with that id number");
+    } else {
+      const response = {
+        news: newsDetails,
+      };
+      res.status(201).json({ response });
+    }
+  } catch (error) {
+    const response = {
+      status: 500,
+      msg: "internal server error",
+    };
+    res.status(500).json({ response });
+  }
+};
+module.exports = {
+  getNew,
+};

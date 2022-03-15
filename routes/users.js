@@ -3,7 +3,7 @@ var router = express.Router();
 const {validateCreate} = require('../validator/user')
 var userController = require("../controllers/userController");
 
-/* GET users listing. */
+/* GET users listing. PRUEBA*/
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
