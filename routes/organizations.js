@@ -1,11 +1,6 @@
 const router = require('express').Router();
-const Organization = require('../models').Organization;
+const { getOrganization, getSlide } = require('../controllers/organization');
 
-
-router.get('/', async function(req, res, next) {
-    
-    
-    res.send('respond with a resource');
-})
+router.get('/public', getOrganization)
 
 module.exports = router;
