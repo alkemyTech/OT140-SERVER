@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class social_media extends Model {
     /**
@@ -19,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
   social_media.init({
     name: DataTypes.STRING,
     url: DataTypes.STRING,
-    idOrganizacion: DataTypes.INTEGER
+    idOrganization: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'social_media',
