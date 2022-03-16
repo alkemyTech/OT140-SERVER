@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { getOrganization, getSlide } = require('../controllers/organization');
+const { getOrganization } = require('../controllers/organization');
 
 router.get('/public', getOrganization)
 

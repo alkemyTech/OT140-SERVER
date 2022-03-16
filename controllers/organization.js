@@ -6,7 +6,7 @@ const getOrganization = async (req, res) => {
     try {
         const orga = await Organization.findAll({
             include: {
-                model : Slide,
+                model: Slide,
                 order: [
                     ['order', 'ASC']
                 ],
@@ -20,6 +20,5 @@ const getOrganization = async (req, res) => {
 };
 
 module.exports = {
-    getOrganization,
-    getSlide
+    getOrganization
 };  
