@@ -9,10 +9,11 @@ const create = async(req, res) => {
         if (errors.isEmpty()){
             // if there are no errors, create testimony
             try {
-                const { name, content } = req.body;
+                const { name, image, content } = req.body;
                
                     const newTestimony = await Testimonial.create({ 
                         name: name,
+                        image: image ? image : null,
                         content: content
                     });
                     
