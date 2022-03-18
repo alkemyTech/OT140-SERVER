@@ -11,11 +11,11 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      social_media.belongsTo(models.Organization,{
-        foreignKey:'id',
-        target_Key: 'idOrganization'
-      })
+      social_media.belongsTo(models.Organization, { as: 'social' });
     }
+
+    
+
   }
   social_media.init({
     name: DataTypes.STRING,

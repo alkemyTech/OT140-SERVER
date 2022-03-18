@@ -11,10 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-     Organization.hasMany(models.social_media,{
-       foreignKey:'idOrganization'
-     })
+      Organization.hasMany(models.social_media);
     }
+
+    
   };
   Organization.init({
     name: DataTypes.STRING,
