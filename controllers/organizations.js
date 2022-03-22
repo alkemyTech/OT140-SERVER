@@ -5,8 +5,8 @@ const getOrganization = async (req, res) => {
 
     try {
         const orga = await Organization.findAll({
-            includes :{
-                models: social_media
+            include: {
+                model: social_media
             }
           });
         res.json(orga)
