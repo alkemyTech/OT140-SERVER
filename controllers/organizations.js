@@ -5,10 +5,10 @@ const getOrganization = async (req, res) => {
 
     try {
         const orga = await Organization.findAll({
-            include: {
-                model: social_media
+            includes :{
+                models: social_media
             }
-        });
+          });
         res.json(orga)
     } catch (error) {
         res.json({ msg: 'there are no organizations to display' });
