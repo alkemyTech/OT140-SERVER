@@ -2,26 +2,28 @@
 const {
   Model
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
-  class New extends Model {
+  class social_media extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      New.belongsTo(models.Role, {as: 'categories'});
+      social_media.belongsTo(models.Organization);
     }
-  };
-  New.init({
+
+    
+
+  }
+  social_media.init({
     name: DataTypes.STRING,
-    content: DataTypes.STRING,
-    image: DataTypes.STRING,
-    categoryId: DataTypes.INTEGER,
-    deletedAt: DataTypes.DATE
+    url: DataTypes.STRING,
+    organizationId: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'New',
+    modelName: 'social_media',
   });
-  return New;
+  return social_media;
 };
