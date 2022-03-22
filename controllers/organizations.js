@@ -1,5 +1,19 @@
 const { Organization } = require('../models');
+const { social_media } = require('../models');
 
+const getOrganization = async (req, res) => {
+
+    try {
+        const orga = await Organization.findAll({
+            include: {
+                model: social_media
+            }
+        });
+        res.json(orga)
+    } catch (error) {
+        res.json({ msg: 'there are no organizations to display' });
+    }
+};
 
 const updateOrganization = async ( req, res ) => {
 
@@ -16,5 +30,6 @@ const updateOrganization = async ( req, res ) => {
 
 
 module.exports = {
-    updateOrganization
+    updateOrganization,
+    getOrganization
 };

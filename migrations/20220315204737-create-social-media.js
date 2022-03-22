@@ -14,7 +14,7 @@ module.exports = {
       url: {
         type: Sequelize.STRING
       },
-      idOrganization: {
+      organizationId: {
         type: Sequelize.INTEGER,
         references:{
           model:'Organizations', 

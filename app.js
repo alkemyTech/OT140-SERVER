@@ -37,7 +37,7 @@ app.use('/news', newsRouter)
 app.use('/activities',activitiesRouter);
 app.use('/comments',commentsRouter);
 app.use('/categories', categoriesRouter);
-app.use('/organizations', organizationsRouter);
+app.use('/organization', organizationsRouter);
 app.use('/testimonials', testimonialsRouter);
 app.use("/slides", slidesRouter);
 
