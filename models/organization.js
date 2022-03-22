@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const social_media = require('./social_media');
 module.exports = (sequelize, DataTypes) => {
   class Organization extends Model {
     /**
@@ -11,7 +12,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Organization.hasMany(models.Slide);
+      Organization.hasMany(models.social_media);
     }
+
+    
   };
   Organization.init({
     name: DataTypes.STRING,
