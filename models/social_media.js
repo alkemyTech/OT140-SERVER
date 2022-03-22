@@ -10,8 +10,6 @@ module.exports = (sequelize, DataTypes) => {
       social_media.belongsTo(models.Organization);
     }
 
-    
-
   }
   social_media.init({
     name: DataTypes.STRING,
