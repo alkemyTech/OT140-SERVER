@@ -5,11 +5,6 @@ const {
 const social_media = require('./social_media');
 module.exports = (sequelize, DataTypes) => {
   class Organization extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
       Organization.hasMany(models.social_media);
     }
