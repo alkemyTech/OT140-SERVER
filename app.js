@@ -30,16 +30,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
+app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/contacts', contactRouter);
 app.use('/activities',activitiesRouter);
 app.use('/comments',commentsRouter);
 app.use('/categories', categoriesRouter);
-app.use("/organization", organizationsRouter);
+app.use('/organization', organizationsRouter);
 app.use('/testimonials', testimonialsRouter);
 app.use('/news', newsRouter);
-app.use("/slides", slidesRouter);
+app.use('/slides', slidesRouter);
 
 
 // catch 404 and forward to error handler
