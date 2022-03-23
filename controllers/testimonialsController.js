@@ -92,7 +92,7 @@ const getAll = async (req, res) => {
     
     const { count, rows} = await Testimonial.findAndCountAll({
         
-        attributes: ['name', 'image', 'content'],
+        attributes: ['id','name', 'image', 'content'],
         order: [['updatedAt', 'DESC']],
         limit: limit,
         offset: limit * (page - 1)
