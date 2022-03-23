@@ -3,36 +3,27 @@
 // Verifica TOKEN en el Header
 // ====================================
 const jwt = require("jsonwebtoken");
-const User = require("../models/user");
+const { User } = require("../models/");
 
-const checkToken = (req, res, next) => {
-
+const checkToken = async(req, res, next) => {
     if (!req.headers['user-token']) {
-        return res.json({
+        return res.status(401).json({
             error: 'Need to include user-token on the header'
         });
     }
-
-    const userToken = req.headers['user-token'];
-    let payload = {};
-
     try {
-        payload = jwt.verify(userToken, process.env.SEED, () => {
-          if(User.roleId === 1){
-              next();
-          } else {
-            return res.status(403).json({ message: "El usuario no es administrador." })
-          }
+        const userToken = req.headers['user-token'];
+        const { uid } = jwt.verify(userToken, process.env.SECRET);
+        const user = await User.findOne({ where:{ id : uid, deletedAt : null } });
+        if(!user) return res.status(404).json({ msg: 'Invalid token - User not found' });
+        req.user = user;
+        next();
         
-        });
-
     } catch (error) {
-        return res.status(403).json({
-            error: 'Wrong TOKEN'
+        return res.status(401).json({
+            error: 'Error- Wrong TOKEN'
         });
     }
-
-    //next();
 }
 
 module.exports = {
