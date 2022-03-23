@@ -9,4 +9,8 @@ router
     .put('/:id', updateNews)
 
 
+
+
+;
+
 module.exports = router;

@@ -14,7 +14,7 @@ const categoriesRouter = require('./routes/categories');
 const contactRouter = require('./routes/contacts');
 const newsRouter = require('./routes/news');
 const organizationsRouter = require('./routes/organizations');
-const testimonialsRouter = require ('./routes/testimonials');
+const testimonialsRouter = require ('./routes/testimonials')
 const slidesRouter = require("./routes/slides");
 
 const app = express();
