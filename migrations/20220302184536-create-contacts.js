@@ -2,7 +2,7 @@
 
 module.exports = {
   async up (queryInterface, Sequelize) {
-    return queryInterface.createTable("activities", {
+    return queryInterface.createTable("contacts", {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -13,13 +13,25 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      image: {
+      phone: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
+      email: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      content: {
+      message: {
         type: Sequelize.STRING,
         allowNull: false
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
       },
       deletedAt: {
         type: Sequelize.DATE

@@ -1,26 +1,29 @@
 'use strict';
-const {  Model} = require('sequelize');
+const {
+  Model
+} = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
-  class Activities extends Model {
+  class social_media extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      social_media.belongsTo(models.Organization, { as: 'social' });
     }
-  };
-  Activities.init({
+
+    
+
+  }
+  social_media.init({
     name: DataTypes.STRING,
-    content: DataTypes.STRING,
-    image: DataTypes.STRING,
-    deletedAt: DataTypes.DATE
+    url: DataTypes.STRING,
+    idOrganization: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'Activities',
-    paranoid: true
+    modelName: 'social_media',
   });
-  return Activities;
+  return social_media;
 };
-

@@ -1,6 +1,5 @@
 # Server Base - Proyecto ONG
 
-
 ## Envinroment setup
 
 1) Create database
@@ -37,3 +36,15 @@ https://documenter.getpostman.com/view/15547223/UVktoYcg
 ``` bash
 https://documenter.getpostman.com/view/15547223/UVktoYcg
 ```
+3) Categories
+
+``` bash
+https://documenter.getpostman.com/view/15433943/UVkpNvKS
+
+4) Testing Users
+
+https://documenter.getpostman.com/view/15433943/UVsLQ69f
+
+## Ticket 68
+
+Si hay conflicto de branch, eliminar el archivo package-lock.json, ejecutar en la consola npm i asi aparece nuevamente y luego pushear
