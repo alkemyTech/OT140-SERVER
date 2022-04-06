@@ -1,10 +1,5 @@
 const { Categories } = require("../models/index");
 
-const getCategoriesName = async (req, res) => {
-
-  const categorias = await Categories.findAll();
-  res.json(categorias);
-};
 
 const getCategories = async (req, res) => {
 
@@ -103,7 +98,6 @@ const deleteCategorie = async (req, res) => {
 
 module.exports = {
   getCategoryById,
-  getCategoriesName,
   getCategories,
   updateCategories,
   createCategorie,
