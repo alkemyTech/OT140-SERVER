@@ -9,7 +9,7 @@ const getCategories = async (req, res) => {
 };
 
 
-const getCategoryById = async (req, res, next) => {
+const getCategoryById = async (req, res) => {
   try {
     const { id } = req.params;
     const category = await Categories.findOne({
