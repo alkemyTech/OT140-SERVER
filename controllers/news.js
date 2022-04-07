@@ -45,7 +45,6 @@ const updateNews = async (req, res) => {
       .status(200)
       .send({ message: "New succesfully updated", data: updatedNew });
   } catch (err) {
-    console.log(err);
     res.status(500).json("Internal server error");
   }
 };
@@ -77,12 +76,8 @@ const getNew = async (req, res) => {
 const deleteNew = async ( req, res ) => {
   try {
       const id = req.params.id;
-      if( isNaN(id) || !req.params.id ) return res.status(400).json("id number is required or is not a number");
-      //find if exist
-      const niew = await New.findOne({ where: { id: parseInt(id) }, attributes: ['categoryId' ] });
-      if( !niew ) return res.status(404).json("No news with that id number");
       //soft delete
-      await New.destroy({where: { id: parseInt(id) }});
+      await New.destroy({ where: { id } });
       res.json("New deleted");
   } catch (error) {
       res.status(500).json({ msg: 'Internal Server Error at delete new' });

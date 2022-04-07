@@ -1,5 +1,4 @@
-const { check, param, validationResult } = require("express-validator");
-const { New } = require("../models");
+const { check, validationResult } = require("express-validator");
 const validateCreateNews = [
   check("name").exists().not().isEmpty(),
   check("content").exists().not().isEmpty(),
