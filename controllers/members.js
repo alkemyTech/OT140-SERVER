@@ -25,4 +25,8 @@ const getMember = async (req, res) => {
       nextPage: nextPage,
     });
 };
-module.exports = {getMember};
+
+
+module.exports = { 
+    getMember
+};

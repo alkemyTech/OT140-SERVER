@@ -16,6 +16,7 @@ const newsRouter = require('./routes/news');
 const organizationsRouter = require('./routes/organizations');
 const testimonialsRouter = require ('./routes/testimonials')
 const slidesRouter = require("./routes/slides");
+const membersRouter = require('./routes/members');
 
 const app = express();
 app.use(cors());
@@ -41,8 +42,7 @@ app.use('/categories', categoriesRouter);
 app.use('/organizations', organizationsRouter);
 app.use('/testimonials', testimonialsRouter);
 app.use("/slides", slidesRouter);
-
-
+app.use('/members', membersRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
