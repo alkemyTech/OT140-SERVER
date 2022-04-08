@@ -5,9 +5,10 @@ const getContacts = async (req, res) => {
 
     try {
         const list_contact = await Contact.findAll();
-        res.json(list_contact)
+        res.status(200).json(list_contact)
     } catch (error) {
-        res.json(error);
+        console.log(error)
+        res.status(500).send('Internal server error')
     }
 }
 
