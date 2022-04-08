@@ -20,9 +20,10 @@ const getOrganization = async (req, res) => {
         const list_org = await Organization.findAll({
             attributes: ['name', 'image','phone','address']
           });
-        res.json(list_org)
+        res.status(200).json(list_org)
     } catch (error) {
-        res.json(error);
+        console.log(error)
+        res.status(500).send('Internal server error')
     }
 };
 
