@@ -26,7 +26,19 @@ const getMember = async (req, res) => {
     });
 };
 
+const createMember = async (req, res) => {
+  try {
+    const {name} = req.body;
+    const newMember = await member.create({ name: name });
+    res.status(200).json({
+      msg: `Member was created successfully`,
+      data: newMember
+  });
+    
+  } catch (error) {
+      res.status(404).json({error});
+  }
+}
 
-module.exports = { 
-    getMember
-};
+
+module.exports = { getMember, createMember  };
