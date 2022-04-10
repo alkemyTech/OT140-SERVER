@@ -24,10 +24,11 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     welcomeText: DataTypes.STRING,
     aboutUsText: DataTypes.STRING,
-    isActive: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'Organization',
+    timestamps: true,
+    paranoid: true
   });
   return Organization;
 };
