@@ -9,11 +9,6 @@ router
     .get("/:id", getNew)
     .post('/', validateCreateNews, createNews)
     .put('/:id', updateNews)
-    .delete("/:id", newsDeleteForm, deleteNew)
-
-
-
-
-;
+    .delete("/:id", newsDeleteForm, deleteNew);
 
 module.exports = router;
