@@ -1,4 +1,5 @@
-const { Categories } = require("../models/index");
+const { Categories } = require("../models");
+const { listItemsDB } = require("../helpers/db/listItemsDB");
 
 const createCategorie = async (req, res) => {
   try {
@@ -45,26 +46,15 @@ const deleteCategorie = async (req, res) => {
   }
 };
 
-
-
-
 const getCategories = async(req, res) => {
-  
-  let limit = 10;
-  let offset = 0;
-  const data = await Categories.findAndCountAll();
-  let page = req.params.page; // page number
-  let pages = Math.ceil(data.count / limit);
-  offset = limit * (page - 1);
-  
-  const previousPage = page - 1;
-  const nextPage = page + 1;
-  
-  const categorias = await Categories.findAll({
-    attributes: ['name']
-  });
-  
-  res.status(200).json({ 'result': categorias, 'count': data.count, 'pages': pages, 'previousPage': previousPage, 'nextPage': nextPage });
+  try {
+
+    const response = await listItemsDB(req, Categories, [ 'name' ] );
+    res.status(200).json( response );
+  } catch (error) {
+    res.status(500).json({ msg: "internal server error" });
+  }
+
 };
 
 const updateCategories = async(req, res) => {
