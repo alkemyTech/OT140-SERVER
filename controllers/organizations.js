@@ -14,7 +14,20 @@ const updateOrganization = async ( req, res ) => {
     res.status(200).json({ msg: 'Organization updated' });
 }
 
+const getOrganization = async (req, res) => {
+
+    try {
+        const list_org = await Organization.findAll({
+            attributes: ['name', 'image','phone','address']
+          });
+        res.status(200).json(list_org)
+    } catch (error) {
+        console.log(error)
+        res.status(500).send('Internal server error')
+    }
+};
 
 module.exports = {
-    updateOrganization
+    updateOrganization,
+    getOrganization
 };
