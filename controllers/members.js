@@ -32,10 +32,10 @@ const createMember = async (req, res) => {
     const newMember = await member.create({ 
       name: name,
       facebookUrl: facebookUrl,
-      instagramUrl,
-      linkedinUrl,
-      image,
-      description
+      instagramUrl: instagramUrl,
+      linkedinUrl: linkedinUrl,
+      image: image,
+      description: description
     });
     res.status(200).json({
       msg: `Member was created successfully`,
