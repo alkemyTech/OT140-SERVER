@@ -1,7 +1,7 @@
 const jwt = require ('jwt-simple');
 
 
-const checkToken = (req, res, next) => {
+const tokenAdm = (req, res, next) => {
     if (!req.headers['user-token']){
         return res.status(406).json ({error: 'You need to include the user-token in the header'});
     }
@@ -10,7 +10,7 @@ const checkToken = (req, res, next) => {
     let payload={};
 
     try {
-        payload = jwt.decode(userToken, 'SECRET');
+        payload = jwt.decode(userToken, 'SECRETO');
     } catch (error) {
         return res.status(401).json({error: 'The token is wrong'});
     }
@@ -18,5 +18,5 @@ const checkToken = (req, res, next) => {
 
 }
 module.exports = {
-    checkToken: checkToken
+    tokenAdm : tokenAdm
 }

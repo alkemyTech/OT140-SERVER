@@ -6,7 +6,7 @@ const {
     checkLength,
     checkTypeField
 } = require('./commons.js');
-//const { checkToken } = require('./check-token');
+const { checkToken } = require('./check-token');
 module.exports = {
     // Form field name and content validations
     testimonialForm : [
@@ -15,7 +15,7 @@ module.exports = {
     ],
     // PATH: /api/organizations/:id Method: PATCH
     organizationUpdateForm: [
-       // checkToken,
+        checkToken,
         checkIsAdminLogged,
         checkFieldRequired('params', 'id'),
         checkTypeField("params", "id", "number"),
