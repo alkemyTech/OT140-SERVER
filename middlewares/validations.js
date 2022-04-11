@@ -8,7 +8,12 @@ const {
 } = require('./commons.js');
 const { checkToken } = require('./check-token');
 module.exports = {
-    // Form field name and content validations
+// Form field email and password validations
+    loginForm : [
+        body ('email').isEmail().withMessage ('Ingresa un email valido'),
+        body ('password').notEmpty().withMessage ('Ingresa una contraseña')
+    ],    
+// Form field name and content validations
     testimonialForm : [
         body ('name').notEmpty().withMessage ('Ingresa tu nombre'),
         body ('content').notEmpty().withMessage ('Ingresa un testimonio')
