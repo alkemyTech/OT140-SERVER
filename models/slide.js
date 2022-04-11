@@ -11,14 +11,14 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
-            // associate organizationId with Organization Model primary key
+            Slide.belongsTo(models.Organization, { as: 'Slide' });
         }
     }
     Slide.init({
         imageUrl: DataTypes.STRING,
         text: DataTypes.STRING,
         order: DataTypes.INTEGER,
-        organizationId: DataTypes.INTEGER //associate with Organization Model
+        organizationId: DataTypes.INTEGER
     }, {
         sequelize,
         modelName: 'Slide',
