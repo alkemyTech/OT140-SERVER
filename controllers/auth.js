@@ -1,12 +1,13 @@
-const jwt = require("jsonwebtoken");
-require("dotenv").config();
-//generate token
+const jwt = require('jwt-simple');
+const moment = require('moment');
+
 const generateToken = (user) => {
-  user = {
-    username: user.username,
-    password: user.password,
-  };
-  return (token = jwt.sign(user, process.env.SECRET));
+  const payload = {
+    usarioId: user.id,
+    createAt: moment().unix(),
+    expiredAt: moment().add(5,'minutos').unix()
+  }
+  return jwt.encode(payload, 'SECRETO');
 };
 
 module.exports = { generateToken };
