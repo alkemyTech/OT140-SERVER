@@ -69,6 +69,19 @@ const getNew = async (req, res) => {
   }
 };
 
+
+const deleteNew = async ( req, res ) => {
+  try {
+      const id = req.params.id;
+      //soft delete
+      await New.destroy({ where: { id } });
+      res.json("New deleted");
+  } catch (error) {
+      res.status(500).json({ msg: 'Internal Server Error at delete new' });
+  }
+};
+
+
 const listNews = async (req, res) => {
   try {
     const response = await listItemsDB(req, New, [
@@ -88,4 +101,5 @@ module.exports = {
   getNew,
   listNews,
   updateNews,
+   deleteNew
 };
