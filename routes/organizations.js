@@ -1,7 +1,9 @@
+
 const router = require('express').Router();
 
 const { Organization } = require('../models');
 const { updateOrganization } = require('../controllers/organizations');
+const { getOrganization } = require('../controllers/organizations');
 const { organizationUpdateForm } = require('../middlewares/validations');
 
 
@@ -13,5 +15,9 @@ router.get('/', async function(req, res, next) {
 router.patch('/public/:id', [
     organizationUpdateForm
 ], updateOrganization)
+
+
+router.get('/public', getOrganization);
+
 
 module.exports = router;
