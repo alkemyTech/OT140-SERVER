@@ -1,5 +1,6 @@
 const { check, query, validationResult } = require("express-validator");
-
+const { checkIsAdminLogged } = require('./commons.js');
+const { checkToken } = require('./check-token.js');
 const validateComment = [
   check("user_id")
         .notEmpty()
@@ -23,6 +24,8 @@ const validateComment = [
     }
 ];
 const listComments = [
+    checkToken,
+    checkIsAdminLogged,
     query('order')
       .custom( value => { 
         if(value && value !== 'ASC' && value !== 'DESC'){
@@ -45,9 +48,7 @@ const validateResult = (req, res, next) => {
         return next()
     }catch(err){
         res.status(403).send({errors: err.array()})
-
     }
-
 }
 
 module.exports = { validateComment, listComments };

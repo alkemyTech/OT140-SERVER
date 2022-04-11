@@ -105,7 +105,7 @@ const listComments = async (req, res) => {
         const limit = 10;
         let offset = limit * (page - 1);
         const { count, rows } = await db.Comment.findAndCountAll({
-          attributes: ['email'],
+          attributes: ['body'],
           offset,
           limit,
           order:[ ['createdAt', order] ]
