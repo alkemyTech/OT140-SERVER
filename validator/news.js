@@ -1,5 +1,4 @@
 const { check, validationResult } = require("express-validator");
-
 const validateCreateNews = [
   check("name").exists().not().isEmpty(),
   check("content").exists().not().isEmpty(),
@@ -18,5 +17,8 @@ const validateResult = (req, res, next) => {
     res.status(403).send({ errors: err.array() });
   }
 };
+
+
+
 
 module.exports = {validateCreateNews}
