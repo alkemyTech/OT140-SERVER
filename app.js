@@ -6,8 +6,10 @@ const logger = require("morgan");
 const cors = require("cors");
 require("dotenv").config();
 
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const authRouter = require('./routes/auth');
 const activitiesRouter= require('./routes/activities');
 const commentsRouter = require('./routes/comments');
 const categoriesRouter = require('./routes/categories');
@@ -34,6 +36,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/auth', authRouter)
 app.use('/contacts', contactRouter)
 app.use('/news', newsRouter)
 app.use('/activities',activitiesRouter);
