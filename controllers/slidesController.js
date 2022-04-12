@@ -36,12 +36,12 @@ const updateSlide = async (req, res) => {
 const listSlide = async (req, res) => {
   try {
     const list = await Slide.findAll({ attributes: ["imageUrl", "order"] });
-    res.status(201).json({
+    res.status(200).json({
       msg: "List of Images",
       list,
     });
   } catch (error) {
-    res.status(404).json({
+    res.status(500).json({
       msg: "Something wrong has happened,try again",
       error
     });
