@@ -2,10 +2,10 @@ const { check, validationResult } = require("express-validator");
 
 const validateCreateMember = [
   check("name").exists().not().isEmpty().isString().withMessage('Ingrese un nombre correcto'),
-  check("facebookUrl").exists().not().isEmpty().isString().withMessage('Ingrese una direccion correcta'),
-  check("instagramUrl").exists().not().isEmpty().isString().withMessage('Ingrese una direccion correcta'),
-  check("linkedinUrl").exists().not().isEmpty().isString().withMessage('Ingrese una direccion correcta'),
-  check("image").exists().not().isEmpty().isString().withMessage('Ingrese una imagen correcta'),
+  check("facebookUrl").exists().isString().withMessage('Ingrese una direccion correcta'),
+  check("instagramUrl").exists().isString().withMessage('Ingrese una direccion correcta'),
+  check("linkedinUrl").exists().isString().withMessage('Ingrese una direccion correcta'),
+  check("image").exists().isString().withMessage('Ingrese una imagen correcta'),
   check("description").exists().not().isEmpty().isString().withMessage('Ingrese una descripcion correcta'),
  
   (req, res, next) => {
