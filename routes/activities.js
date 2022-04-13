@@ -3,8 +3,10 @@ const router = express.Router();
 const activitiesController = require('../controllers/activities');
 
 
-
-router.put('/:id',activitiesController.updateActivity);
-
+router
+    .get('/', activitiesController.getAll)
+    .get('/:id', activitiesController.getById)
+    .post('/', activitiesController.createActivity)
+    .put('/:id', activitiesController.updateActivity);
 
 module.exports = router;
