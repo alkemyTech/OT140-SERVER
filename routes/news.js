@@ -9,7 +9,7 @@ const checkRole = require('../middlewares/check-role')
 
 router
     .get("/:id", getNew)
-    .get("/list", listNews );
+    .get("/list", listNews )
     .post('/', validateCreateNews, createNews)
     .put('/:id', updateNews)
     .delete("/:id", newsDeleteForm, deleteNew);
