@@ -1,5 +1,5 @@
 const url = 'http://localhost:3000/activities';
-const id = 10;
+const id = 1;
 const noId = 99999;
 
 const activity = {
