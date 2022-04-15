@@ -1,6 +1,6 @@
 const url = 'http://localhost:3000/activities';
-const id = 1;
-const noId = 999;
+const id = 10;
+const noId = 99999;
 
 const activity = {
     name: 'TEST Name',
@@ -12,6 +12,7 @@ describe('Endpoint /activities', () => {
     it('Get all activities', () => {
         cy.request('GET', url)
             .should((response) => {
+                expect('Content-Type', /json/)
                 expect(response.status).to.eq(200)
                 expect(response.body).to.not.be.null
             });
@@ -47,5 +48,54 @@ describe('Endpoint /activities', () => {
                 expect(response.body).to.not.be.null
             })
             .its('body')
+    });
+
+    it('Update an activity by Id', () => {
+        cy.request({
+                method: 'PUT',
+                url: `${url}/${id}`,
+                body: activity
+            })
+            .should((response) => {
+                expect(response.status).to.eq(201)
+                expect(response.body).to.not.be.null
+            });
+    });
+
+    it('Update an activity by wrong Id', () => {
+        cy.request({
+                method: 'PUT',
+                url: `${url}/${noId}`,
+                body: activity,
+                failOnStatusCode: false
+            })
+            .should((response) => {
+                expect(response.status).to.eq(404)
+                expect(response.body).to.not.be.null
+            });
+    });
+
+    it('Delete an activity by Id', () => {
+        cy.request({
+                method: 'DELETE',
+                url: `${url}/${id}`,
+            })
+            .should((response) => {
+                expect(response.status).to.eq(200)
+                expect(response.body).to.not.be.null
+                expect(response.body).to.have.property('message')
+            });
+    });
+
+    it('Delete an activity by wrong Id', () => {
+        cy.request({
+                method: 'DELETE',
+                url: `${url}/${noId}`,
+                failOnStatusCode: false
+            })
+            .should((response) => {
+                expect(response.status).to.eq(404)
+                expect(response.body).to.not.be.null
+            });
     });
 });
