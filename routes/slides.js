@@ -5,6 +5,7 @@ const {
   updateSlide,
   listSlide,
 } = require("../controllers/slidesController");
+const { checkToken } = require("../middlewares/check-token");
 const {checkIsAdminLogged}= require('../middlewares/commons')
 
 const router = Router();
@@ -12,6 +13,6 @@ const router = Router();
 
 router.post("/", postSlide);
 router.put("/:id", updateSlide);
-router.get("/",checkIsAdminLogged, listSlide);
+router.get("/",checkToken,checkIsAdminLogged, listSlide);
 
 module.exports = router;
