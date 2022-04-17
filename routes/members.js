@@ -8,5 +8,5 @@ router.get('/', getAll);
 /* POST members listing. 
 router.post('/', create);
 router.put('/:id',update);
-router.delete('/:id', remove);
-module.exports = router; */
+router.delete('/:id', remove);*/
+module.exports = router; 
