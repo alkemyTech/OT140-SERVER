@@ -31,7 +31,6 @@ const createMember = async (req, res) => {
 }
 
 
-module.exports = { getMember, createMember  };
 const deleteMember= async (req, res) => {
   try {
     const { id } = req.params;
@@ -49,7 +48,6 @@ const deleteMember= async (req, res) => {
   }
 };
   
-
 
 
 module.exports = {
