@@ -41,6 +41,10 @@ https://documenter.getpostman.com/view/15547223/UVktoYcg
 ``` bash
 https://documenter.getpostman.com/view/15433943/UVkpNvKS
 
-4) Testing Users
+4) Members
+
+https://documenter.getpostman.com/view/17893016/UVyyuYfU
+
+5) Testing Users
 
 https://documenter.getpostman.com/view/15433943/UVsLQ69f
