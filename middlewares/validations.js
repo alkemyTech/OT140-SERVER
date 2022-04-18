@@ -7,6 +7,7 @@ const {
     checkTypeField
 } = require('./commons.js');
 const { checkToken } = require('./check-token');
+const checkRole = require('./check-role');
 module.exports = {
 // Form field email and password validations
     loginForm : [
@@ -18,7 +19,7 @@ module.exports = {
         body ('name').notEmpty().withMessage ('Ingresa tu nombre'),
         body ('content').notEmpty().withMessage ('Ingresa un testimonio')
     ],
-    // PATH: /api/organizations/:id Method: PATCH
+    // PATH: /organizations/:id Method: PATCH
     organizationUpdateForm: [
         checkToken,
         checkIsAdminLogged,
@@ -40,5 +41,10 @@ module.exports = {
         checkTypeField("body", "aboutUsText", "string"),
         checkLength("body", "aboutUsText", null, 15, 700),
         checkTypeField("body", "isActive", "boolean")
+    ],
+    // PATH: /news/:id Method: DELETE
+    newsDeleteForm: [
+        checkToken,
+        checkRole("Admin")
     ]
 }
