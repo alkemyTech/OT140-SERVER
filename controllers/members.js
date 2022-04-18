@@ -19,7 +19,7 @@ const deleteMember= async (req, res) => {
       res.status(404).json("Member does not exist");
     } else {
       await member.destroy({where: { id: id }});
-      res.status(201).json({msg: 'deleted Category' });
+      res.status(200).json({msg: 'deleted Category' });
     }
   } catch (err) {
     res.status(500).json({ msg: 'Internal Server Error at delete '});
