@@ -7,6 +7,7 @@ const cors = require("cors");
 require("dotenv").config();
 
 
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
@@ -19,6 +20,28 @@ const organizationsRouter = require('./routes/organizations');
 const testimonialsRouter = require ('./routes/testimonials')
 const slidesRouter = require("./routes/slides");
 const membersRouter = require('./routes/members');
+//swagger
+const swaggerUI = require('swagger-ui-express');
+const swaggerJsDoc = require('swagger-jsdoc');
+
+
+const swaggerSpec ={
+    definition: {
+        openapi :"3.0.0",
+        info: {
+            title:  "ONG Team 140 - Node",
+            version: "1.0.0",
+        },
+        servers:[
+            {
+                url:"http://localhost:3000",
+            },
+        ],
+    },
+    apis:[`${path.join(__dirname, "../routers/*.js")}`],
+}
+//fin swagger
+
 
 const app = express();
 app.use(cors());
@@ -46,6 +69,7 @@ app.use('/organizations', organizationsRouter);
 app.use('/testimonials', testimonialsRouter);
 app.use("/slides", slidesRouter);
 app.use('/members', membersRouter);
+app.use('/endpoint/api/doc', swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(swaggerSpec)));
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
