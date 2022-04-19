@@ -35,17 +35,19 @@ const updateSlide = async (req, res) => {
 };
 const deleteSlide = async (req, res) => {
   const { id } = req.params;
-  
-  const findSlide = await Slide.findByPk(id);
-  
-  if (!findSlide) {
-    res.status(404).json({
-      msg: "Sorry,Silde does not exist",
+  try {
+    await Slide.destroy({
+        where: { id },
     });
-  } else {
-    await Slide.destroy({ where: { id } });
-    res.status(200).json({ msg: "The Slide was deleted" });
-  }
+    res.status(200).json({
+        msg: `The slide with the id ${id} it was deleted.`,
+    });
+} catch (error) {
+    res.status(404).json({
+        msg: `Slide with the id ${id} does not exist.`,
+        error,
+    });
+}
 };
 
 module.exports = {
