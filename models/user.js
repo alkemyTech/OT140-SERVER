@@ -2,7 +2,7 @@ const bcrypt = require("bcrypt");
 'use strict';
 
 const {
-  Model
+    Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       User.belongsTo(models.Role, {as: 'role'});
+      User.hasMany(models.Comment);
     }
   };
   User.init({
