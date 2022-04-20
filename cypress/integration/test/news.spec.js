@@ -95,7 +95,8 @@ describe("New endpoint testing", () => {
       expect(response.body).to.not.be.null;
       expect(response.body).to.have.property('previousPage');
       expect(response.body).to.have.property('nextPage');
-      expect(response.body).to.have.property('news');
+      expect(response.body).to.have.property('items');
+      expect(response.body.items).to.not.be.null;
     }) 
     ;
   });
