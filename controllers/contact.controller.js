@@ -26,4 +26,16 @@ const createContact = async (req, res) => {
     }
 }
 
-module.exports = {createContact}
+const contactFindAll = async (req, res) =>{
+    try {
+        const contact = await Contact.findAll({
+            attributes: ['id', 'name', 'phone', 'email', 'message']
+        });
+        return res.json(contact);
+
+    } catch (error) {
+        res.status(500).send('Internal server error: '+error)
+    }
+};
+
+module.exports = {createContact, contactFindAll}
