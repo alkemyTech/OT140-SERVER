@@ -33,6 +33,7 @@ const updateSlide = async (req, res) => {
     });
   }
 };
+
 const deleteSlide = async (req, res) => {
   const { id } = req.params;
   try {
@@ -43,15 +44,32 @@ const deleteSlide = async (req, res) => {
         msg: `The slide with the id ${id} it was deleted.`,
     });
 } catch (error) {
-    res.status(404).json({
-        msg: `Slide with the id ${id} does not exist.`,
+    res.status(500).json({
+        msg: `Internal Server error.`,
         error,
     });
 }
+
+const listSlide = async (req, res) => {
+  try {
+    const list = await Slide.findAll({ attributes: ["imageUrl", "order"] });
+    res.status(200).json({
+      msg: "List of Images",
+      list,
+    });
+  } catch (error) {
+    res.status(500).json({
+      msg: "Something wrong has happened,try again",
+      error
+    });
+  }
+
+  
 };
 
 module.exports = {
   postSlide,
   updateSlide,
   deleteSlide,
+  listSlide,
 };
