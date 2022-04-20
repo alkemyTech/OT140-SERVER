@@ -33,6 +33,23 @@ const updateSlide = async (req, res) => {
     });
   }
 };
+
+const deleteSlide = async (req, res) => {
+  const { id } = req.params;
+  try {
+    await Slide.destroy({
+        where: { id },
+    });
+    res.status(200).json({
+        msg: `The slide with the id ${id} it was deleted.`,
+    });
+} catch (error) {
+    res.status(500).json({
+        msg: `Internal Server error.`,
+        error,
+    });
+}
+
 const listSlide = async (req, res) => {
   try {
     const list = await Slide.findAll({ attributes: ["imageUrl", "order"] });
@@ -46,10 +63,13 @@ const listSlide = async (req, res) => {
       error
     });
   }
+
+  
 };
 
 module.exports = {
   postSlide,
   updateSlide,
+  deleteSlide,
   listSlide,
 };
