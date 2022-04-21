@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
-            Slide.belongsTo(models.Organization, { foreignKey: "organizationId", targetKey: 'id' });
+            Slide.belongsTo(models.Organization, { as: 'Slide', foreignKey: "organizationId", targetKey: 'id' });
         }
     }
     Slide.init({
