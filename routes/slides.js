@@ -5,19 +5,19 @@ const {
     updateSlide,
     deleteSlide,
     listSlide,
+    getById
 } = require("../controllers/slidesController");
 const { checkToken } = require("../middlewares/check-token");
 const { checkIsAdminLogged } = require("../middlewares/commons");
 
 
 const router = Router();
-/* GET home page. */
 
-router.post("/", postSlide);
-router.put("/:id", updateSlide);
+router.post("/", checkToken, checkIsAdminLogged, postSlide);
+router.put("/:id", checkToken, checkIsAdminLogged, updateSlide);
 router.delete("/:id", checkToken, checkIsAdminLogged, deleteSlide);
 router.get("/", checkToken, checkIsAdminLogged, listSlide);
-
+router.get("/:id", checkToken, checkIsAdminLogged, getById);
 
 
 module.exports = router;

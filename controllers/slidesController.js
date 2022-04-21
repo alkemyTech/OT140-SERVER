@@ -52,7 +52,7 @@ const deleteSlide = async(req, res) => {
             error,
         });
     }
-}
+};
 
 const listSlide = async(req, res) => {
     try {
@@ -67,26 +67,28 @@ const listSlide = async(req, res) => {
             error
         });
     }
-
-    const getById = async(req, res) => {
-        try {
-            const { id } = req.params;
-            const getId = await Slide.findByPk(id);
-            !getId
-                ?
-                res.status(404).send(`The slide with id ${id} was not found!`) :
-                res
-                .status(201)
-                .json(getId);
-        } catch (err) {
-            res.status(500);
-        }
-    };
 };
+
+const getById = async(req, res) => {
+    try {
+        const { id } = req.params;
+        const getId = await Slide.findByPk(id);
+        !getId
+            ?
+            res.status(404).send(`The slide with id ${id} was not found!`) :
+            res
+            .status(201)
+            .json(getId);
+    } catch (err) {
+        res.status(500);
+    }
+};
+
 
 module.exports = {
     postSlide,
     updateSlide,
     deleteSlide,
     listSlide,
+    getById
 };
