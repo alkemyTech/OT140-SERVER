@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
-//const { getAll, create, update,remove } = require('../controllers/members');
 
-/* GET members listing. 
-router.get('/', getAll);
+const { getMember, deleteMember, createMember } = require('../controllers/members');
+const {validateCreateMember} = require("../validator/members");
 
-/* POST members listing. 
-router.post('/', create);
-router.put('/:id',update);
-router.delete('/:id', remove);*/
+
+router.post('/', validateCreateMember, createMember);
+router.get('/', getMember);
+router.delete("/:id", deleteMember);
+
+
 module.exports = router; 
