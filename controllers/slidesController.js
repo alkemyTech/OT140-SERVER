@@ -48,7 +48,7 @@ const deleteSlide = async (req, res) => {
         msg: `Internal Server error.`,
         error,
     });
-}
+}}
 
 const listSlide = async (req, res) => {
   try {
