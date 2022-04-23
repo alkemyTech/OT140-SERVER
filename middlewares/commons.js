@@ -21,8 +21,8 @@ const checkTypeField = (reqObj, field, type = "number") => {
           return next();
         }
       }
-      if (type === "boolean") {
-          console.log("estoy en boole")
+      if (type === "boolean") {  console.log("estoy en boole")
+        
           console.log(req[reqObj][field]);
         if (typeof JSON.parse(req[reqObj][field].trim()) === "boolean") {
             console.log("soy?");
