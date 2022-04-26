@@ -7,7 +7,7 @@ const newMember = {
     description: 'description'
 }
 const urlEndpoint = "http://localhost:3000/members/"
-const id = 22;
+const id = 24;
 
 
 describe("MEMBERS TESTING", () => {
@@ -18,7 +18,7 @@ describe("MEMBERS TESTING", () => {
             .should((response) => {
                 expect('Content-Type', /json/)
                 expect(response.status).to.eq(200)
-                expect(response.body).to.not.be.null
+                expect(response.body).to.deep.equal(response.body)
             });
     });
 
@@ -29,7 +29,7 @@ describe("MEMBERS TESTING", () => {
             body: newMember
         }).should((response) => {
             expect(response.status).to.eq(201)
-            expect(response.body).to.not.be.null
+            expect(response.body).to.deep.equal(response.body)
         })
     });
 
@@ -43,7 +43,7 @@ describe("MEMBERS TESTING", () => {
         })
             .should((response) => {
                 expect(response.status).to.eq(201)
-                expect(response.body).to.not.be.null
+                expect(response.body).to.deep.equal(response.body)
             });
     });
     it(' Update - Member not found', () => {
@@ -55,7 +55,7 @@ describe("MEMBERS TESTING", () => {
         })
             .should((response) => {
                 expect(response.status).to.eq(404)
-                expect(response.body).to.not.be.null
+                expect(response.body).to.deep.equal(response.body)
             });
     });
 
@@ -68,7 +68,7 @@ describe("MEMBERS TESTING", () => {
         })
             .should((response) => {
                 expect(response.status).to.eq(200)
-                expect(response.body).to.not.be.null
+                expect(response.body).to.deep.equal(response.body)
             });
     });
     it('Delete - Member not found', () => {
@@ -79,7 +79,7 @@ describe("MEMBERS TESTING", () => {
         })
             .should((response) => {
                 expect(response.status).to.eq(404)
-                expect(response.body).to.not.be.null
+                expect(response.body).to.deep.equal(response.body)
             });
     });
 
