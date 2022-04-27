@@ -14,7 +14,7 @@ describe('Endpoint /activities', () => {
             .should((response) => {
                 expect('Content-Type', /json/)
                 expect(response.status).to.eq(200)
-                expect(response.body).to.not.be.null
+                expect(response.body).to.deep.equal(response.body)
             });
     });
 
@@ -22,7 +22,7 @@ describe('Endpoint /activities', () => {
         cy.request(`${url}/${id}`)
             .should((response) => {
                 expect(response.status).to.eq(201)
-                expect(response.body).to.not.be.null
+                expect(response.body).to.deep.equal(response.body)
                 expect(response.body).to.have.property('data')
                 expect(response.body).to.have.property('message')
             });
@@ -45,7 +45,7 @@ describe('Endpoint /activities', () => {
                 body: activity
             }).should((response) => {
                 expect(response.status).to.eq(200)
-                expect(response.body).to.not.be.null
+                expect(response.body).to.deep.equal(response.body)
             })
             .its('body')
     });
@@ -58,7 +58,7 @@ describe('Endpoint /activities', () => {
             })
             .should((response) => {
                 expect(response.status).to.eq(201)
-                expect(response.body).to.not.be.null
+                expect(response.body).to.deep.equal(response.body)
             });
     });
 
@@ -82,7 +82,7 @@ describe('Endpoint /activities', () => {
             })
             .should((response) => {
                 expect(response.status).to.eq(200)
-                expect(response.body).to.not.be.null
+                expect(response.body).to.deep.equal(response.body)
                 expect(response.body).to.have.property('message')
             });
     });
