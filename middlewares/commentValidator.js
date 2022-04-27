@@ -1,5 +1,6 @@
-const { check, validationResult } = require("express-validator");
-
+const { check, query, validationResult } = require("express-validator");
+const { checkIsAdminLogged } = require('./commons.js');
+const { checkToken } = require('./check-token.js');
 const validateComment = [
   check("user_id")
         .notEmpty()
@@ -22,7 +23,24 @@ const validateComment = [
         validateResult(req, res, next)
     }
 ];
-
+const listComments = [
+    checkToken,
+    checkIsAdminLogged,
+    query('order')
+      .custom( value => { 
+        if(value && value !== 'ASC' && value !== 'DESC'){
+            throw new Error('order must be asc or desc')
+        }
+        return true
+    }),
+    query('page')
+      .if((value)=>{ return value !== undefined })
+      .isInt()
+      .withMessage('No letters or signs are allowed. Only numbers'),
+    (req, res, next)=> {
+        validateResult(req, res, next)
+    }
+];
 
 const validateResult = (req, res, next) => {
     try{
@@ -30,9 +48,7 @@ const validateResult = (req, res, next) => {
         return next()
     }catch(err){
         res.status(403).send({errors: err.array()})
-
     }
-
 }
 
-module.exports = {validateComment} 
+module.exports = { validateComment, listComments };

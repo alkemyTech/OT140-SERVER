@@ -1,37 +1,45 @@
-describe("Contact api testing", () => {
-    it("GET", () => {
-  
-      cy.request({
-        method: "GET",
-        url: "http://localhost:3000/contacts",
-      }).then((response) => {
-  
-        expect(response.status).equal(200);
-        expect(response.body).to.not.be.null;
-      });
-    });
-  
-    it("POST", () => {
-  
-      const contact = {
-        name: "Usuario-Test",
-        email: "test-cypress@test.com",
-      };
-  
-      cy.request({
-        method: "POST",
-        url: "http://localhost:3000/contacts",
-        body: contact,
-      }).then((response) => {
-        expect(response.status).equal(200);
-  
-      })
-  
-        .its("body")
-        .should("include", {
-            name: "Usuario-Test",
-            email: "test-cypress@test.com",
+const newContact = {
+  name: 'Cypress-test',
+  phone: 123456,
+  email: 'test1@test.com',
+  message: 'Esto es un msj desde cypress',
+}
+const urlGetContacts = "http://localhost:3000/contacts/backoffice"
+const urlContacts = "http://localhost:3000/contacts/"
+
+
+describe("CONTACT TESTING", () => {
+
+  it("Get contacts", () => {
+
+      cy.request('GET', urlGetContacts)
+          .should((response) => {
+              expect('Content-Type', /json/)
+              expect(response.status).to.eq(200)
+              expect(response.body).to.deep.equal(response.body)
+          });
+  });
+
+  it("Get contacts findAll", () => {
+
+    cy.request('GET', urlContacts)
+        .should((response) => {
+            expect('Content-Type', /json/)
+            expect(response.status).to.eq(200)
+            expect(response.body).to.deep.equal(response.body)
         });
-    });
 });
+
+  it('Post a new contact', () => {
+      cy.request({
+          method: 'POST',
+          url: urlContacts,
+          body: newContact
+      }).should((response) => {
+          expect(response.status).to.eq(200)
+          expect(response.body).to.deep.equal(response.body)
+      })
+  });
+
+});  
   
