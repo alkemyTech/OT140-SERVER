@@ -31,10 +31,11 @@ describe('TESTIMONIALS TESTING', () => {
         cy.request('GET', endpoint)
         .then((response) => {
             expect(response.status).equal(200);
-            expect(response.body).to.not.be.null;
             expect(response.body).to.have.property('data');
+            expect(response.body).to.have.property('currentPage');
             expect(response.body).to.have.property('previousPage');
             expect(response.body).to.have.property('nextPage');
+            expect(response.body).to.have.property('total')
         }) 
     });
 
