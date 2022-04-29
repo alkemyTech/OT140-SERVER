@@ -37,9 +37,8 @@ describe("CONTACT TESTING", () => {
           body: newContact
       }).should((response) => {
           expect(response.status).to.eq(200)
-          expect(response.body).to.deep.equal(response.body)
+          expect(response.body.msg).to.deep.equal('contact successfully delivered.')
       })
   });
-
 });  
   
