@@ -1,6 +1,6 @@
 
 const urlEndpoint = "http://localhost:3000/organizations/public/"
-const id= 1
+const id=1
 
 const updateOrganization = {
     name: 'organization 1',
@@ -21,12 +21,12 @@ const updateOrganization = {
           }).then((response) => {
       
             expect(response.status).equal(200);
-            expect(response.body).to.not.be.null;
+            expect(response.url).to.not.be.null;
           });
         });
         
 
-        it("PATCH sin token", () => {
+        it("PATCH", () => {
 
             cy.request({
                 method: 'PATCH',
