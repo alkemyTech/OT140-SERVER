@@ -14,7 +14,7 @@ describe('Endpoint /activities', () => {
             .should((response) => {
                 expect('Content-Type', /json/)
                 expect(response.status).to.eq(200)
-                expect(response.body).to.deep.equal(response.body)
+                expect(response.body).to.have.property('data')
             });
     });
 
@@ -34,7 +34,7 @@ describe('Endpoint /activities', () => {
             failOnStatusCode: false
         }).should((response) => {
             expect(response.status).to.eq(404)
-            expect(response.body).to.not.be.null
+            expect(response.body).to.eq(`The activity with id ${noId} doesn't exist.`)
         });
     });
 
@@ -45,7 +45,7 @@ describe('Endpoint /activities', () => {
                 body: activity
             }).should((response) => {
                 expect(response.status).to.eq(200)
-                expect(response.body).to.deep.equal(response.body)
+                expect(response.body).to.deep.equal('data', 'message')
             })
             .its('body')
     });
@@ -58,7 +58,7 @@ describe('Endpoint /activities', () => {
             })
             .should((response) => {
                 expect(response.status).to.eq(201)
-                expect(response.body).to.deep.equal(response.body)
+                expect(response.body).to.deep.equal('data')
             });
     });
 
@@ -71,7 +71,7 @@ describe('Endpoint /activities', () => {
             })
             .should((response) => {
                 expect(response.status).to.eq(404)
-                expect(response.body).to.not.be.null
+                expect(response.body).to.eq(`The activity with the id ${noId} doesn't exist.`)
             });
     });
 
@@ -82,7 +82,7 @@ describe('Endpoint /activities', () => {
             })
             .should((response) => {
                 expect(response.status).to.eq(200)
-                expect(response.body).to.deep.equal(response.body)
+                expect(response.body).to.eq(`Activity with id ${id} has been deleted.`)
                 expect(response.body).to.have.property('message')
             });
     });
@@ -95,7 +95,7 @@ describe('Endpoint /activities', () => {
             })
             .should((response) => {
                 expect(response.status).to.eq(404)
-                expect(response.body).to.not.be.null
+                expect(response.body).to.eq(`Activity with id ${noId} doesn't exist.`)
             });
     });
 });
