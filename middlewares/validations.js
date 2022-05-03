@@ -32,7 +32,6 @@ module.exports = {
         checkTypeField("body", "address", "string"),
         checkLength("body", "address", null, 7, 50),
         checkTypeField("body", "phone", "number"),
-        checkLength("body", "phone", null, 11, 13),
         checkTypeField("body", "email", "string"),
         checkLength("body", "email", null, 5, 50),
         checkIsEmail("body", "email"),
