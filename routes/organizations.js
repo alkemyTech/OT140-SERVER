@@ -12,9 +12,7 @@ router.get('/', async function(req, res, next) {
     
     res.send('respond with a resource');
 });
-router.patch('/public/:id', [
-    organizationUpdateForm
-], updateOrganization)
+router.patch('/public/:id',  updateOrganization)
 
 
 router.get('/public', getOrganization);
