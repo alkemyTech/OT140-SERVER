@@ -1,6 +1,6 @@
 
 const urlEndpoint = "localhost:3000/organizations/public";
-const id=1;
+const id= 1;
 
 const updateOrganization = {
     name: 'test-name',
@@ -17,22 +17,23 @@ const updateOrganization = {
       it('Get Organizations api', () => {
         cy.request('GET', urlEndpoint)
             .should((response) => {
-                expect('Content-Type', /json/)
-                expect(response.status).to.eq(200)
-               
+                    expect('Content-Type', /json/);
+                    expect(response.status).equal(200);
+                    expect(response.body).to.deep.equal(response.body);
+                    
             });
     });
-
-    it('Update Organizations by Id', () => {
-      cy.request({
-              method: 'PATCH',
-              url: `${urlEndpoint}/${id}`,
-              body: updateOrganization
-          })
-          .should((response) => {
-              expect(response.status).to.eq(201)
-           
-          });
-  });
+    it('Update an Organizations by Id', () => {
+        cy.request({
+                method: 'PUT',
+                url: `${urlEndpoint}/${id}`,
+                body: updateOrganization
+            })
+            .should((response) => {
+                expect(response.status).to.eq(201)
+                expect(response.body).to.deep.equal('data')
+            });
+    });
+    
       
 })
